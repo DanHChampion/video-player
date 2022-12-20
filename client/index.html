@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Video Player - Dan</title>
+<link rel="stylesheet" href="stylesheet.css">
+<link rel="icon" type="image/jpg" href="./assets/favicon.ico"/>
+
+</head>
+<body id="body">
+<nav id="navbar" class="navbar center">
+    <div class="title center">
+        <a class="center" href="http://127.0.0.1:8000/">
+        <img src="./assets/title_icon.png"></img> Dan's Video Player
+        </a>
+    </div>
+    <div id="online-search-bar" class="center">
+        <input type="text" id="url-bar" placeholder="Search">
+    </div>
+    <div id="online-search-button" onclick="loadURL()" class="dropdown-button center">
+        <a class="center"  >
+            <img id="search-icon" src="./assets/search.png"/>        
+        </a>
+    </div>
+   
+</nav>
+
+<div id="main-body" class="main-body center">
+
+    <div id="body-left" class="body-left center noselect">
+        <div id="top-toolbar" class="toolbar title-container" style="top:0px">
+            <div id="video-title" class="video-title">
+
+            </div>
+            <div id="close-player" class="video-options center" onclick="closePlayer()">
+                <img src='./assets/close.png'/>
+            </div>
+            <div id="video-options" class="video-options center" onclick="toggleOptions()">
+                ...
+            </div>
+            <div id="voptions" class="voptions center">
+                <div class="voptions-item center" onclick="if (webpageFrame != null) {getLink()}">
+                    Copy Link Address
+                </div>
+                <div class="voptions-item center" onclick="if (webpageFrame != null) {window.open(getLink())}">
+                    Open in New Tab
+                </div>
+            </div>
+        </div>
+        
+        <div class="video-wrapper center">
+            <div id="video-player" class="video-player center">
+                
+            </div>
+            <div id = "overlay" class='overlay center'>
+                <div id="back10" class="time-increment video-options center" onclick="sub10()">
+                    <img src='./assets/back10.png'/>
+                </div>
+                <div id="pause" class="pause-screen center" onclick="pauseVideo()">
+                    
+                </div>
+                <div id="pause-button" class="video-options center"  onclick="pauseVideo()">
+                    <img src='./assets/pause.png'/>
+                </div>
+                <div id="next10" class="time-increment video-options center" onclick="add10()">
+                    <img src='./assets/add10.png'/>
+                </div>
+            </div>
+        </div>
+        <div id="next-episode" class="center" onclick="nextFile()">
+            <span id="next-label"> <strong>Next Episode</strong></span>
+            <span id="next-title"> </span>
+            <div id="next-timer">
+                
+            </div>
+        </div>
+        <div id="episodes-popup">
+            <div id="episodes-label">
+                Episodes
+            </div>
+            <div id="episodes-wrapper">
+                <div id="episodes-list">
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div id="bottom-toolbar" class="toolbar center" style="bottom:0px">
+            <div id="watchtime-labels" class="center">
+
+            </div>
+            <div id="slider-wrapper">
+                <input id="video-slider" type="range" min="0" value="0">
+            </div>
+            <div id="time-hover" class="time-hover center">
+
+            </div>
+            <div id="next-button" class="video-options center" onclick="nextFile()">
+                <img src='./assets/next.png'/>
+            </div>
+            <div id="episodes-button" class="video-options center">
+                <img src='./assets/episodes.png'/>
+            </div>
+            <div id="volume-button" class="video-options center" onclick="toggleMute()">
+                <img src='./assets/volume2.png'/>
+            </div>
+            <div id="volume-popup" class="center">
+                <input id="volume-slider" type="range" min="0.0" max="0.5" step="0.01" oninput="updateVolume(this.value)" onchange="updateVolume(this.value)">
+            </div>
+            <div id="subs-button" class="video-options center" onclick="toggleSubtitles()">
+                <img src='./assets/subtitles.png'/>
+            </div>
+            <div id="fullscreen-button" class="video-options center" onclick="toggleFullscreen()">
+                <img src='./assets/upsize.png'/> 
+            </div>
+        </div>
+    </div>
+    <div id="body-right" class="body-right center">
+        <div class="input-folder center">
+            <input class="hidden" type="text" id = "folder-selector"></input>
+            <input type="radio" id="home" value="Home" name="folder-selector" class="hidden">
+            <label id="home-lbl" class="folder-selector center" for="home">Home</label>
+            <input type="radio" id="movies" value="Movies" name="folder-selector" class="hidden">
+            <label id="movies-lbl" class="folder-selector center" for="movies">Movies</label>
+            <input type="radio" id="series" value="Series" name="folder-selector" class="hidden">
+            <label id="series-lbl" class="folder-selector center" for="series">Series</label>
+            <input type="radio" id="clips" value="Clips" name="folder-selector" class="hidden">
+            <label id="clips-lbl" class="folder-selector center" for="clips">Clips</label>
+
+        </div>
+        <div class="display-list">
+            <div id="file-list" class="file-list">
+                this should not be seen
+            </div>
+            <div id="video-info" class="video-info">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="utils.js"></script>
+<script src="index.js"></script>
+<script src="bookmarks.js"></script>
+<script src="videoplayer.js"></script>
+
+
+
+</body>
+</html>
